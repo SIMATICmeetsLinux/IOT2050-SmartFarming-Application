@@ -2,6 +2,7 @@
 The soil moisture is recorded with two decentralized LOGO! sensors at different locations and sent to the SIMATIC IOT2050 gateway via Modbus TCP. The IOT2050 obtains the current weather data via the Internet and sends this and the sensor data to the SIMATIC S7-1500, which performs the control tasks, via OPC UA.  
 The open source software node-red acts as the central development and runtime environment for the gateway functionality of the SIMATIC IOT2050
 
+![deploy VFC](graphics/overview.png)
 
 # Instructions
 The following steps describe how to run this application example.
