@@ -12,6 +12,8 @@
      - [Prepare S7-1511C](#prepare-s7-1511c)
      - [Prepare IOT2050](#prepare-iot2050)
   - [Usage](#usage)
+- [Contribution](#contribution)
+- [Licence and Legal Information](#licence-and-legal-information)
 
 ## Overview
 The soil moisture is recorded with two decentralized LOGO! sensors at different locations and sent to the SIMATIC IOT2050 gateway via Modbus TCP. The IOT2050 obtains the current weather data via the Internet and sends this and the sensor data to the SIMATIC S7-1500, which performs the control tasks, via OPC UA.  
@@ -86,3 +88,11 @@ This is needed to create an API key to retrieve data from this service via the n
 2. Choose the city you want to read the weather data
 3. On the LOGO! display you will see the temperature and pressure value
 4. On the S7-1500 the LEDs of the outputs show the current temperature in relation (the higher the temperature is the more LEDs are on)
+
+## Contribution
+
+Thanks for your interest in contributing. Anybody is free to report bugs, unclear documenation, and other problems regarding this repository in the Issues section or, even better, is free to propose any changes to this repository using Merge Requests.
+
+## Licence and Legal Information
+
+Please read the [Legal information](LICENSE.md).
