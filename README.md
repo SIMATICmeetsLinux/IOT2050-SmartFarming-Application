@@ -1,4 +1,21 @@
-# IOT2050-SmartFarming-Application
+# IOT2050 SmartFarming Application
+
+- [Overview](#overview)
+- [Instructions](#instructions)
+  - [Requirements](#requirements)
+    - [Used hardware](#used-hardware)
+    - [Used software](#used-software)
+    - [Pre-requisites](#pre-requisites)
+   - [Installation](#installation)
+     - [Openweathermap](#create-an-account-on-openweathermap)
+     - [Prepare LOGOs](#prepare-logos)
+     - [Prepare S7-1511C](#prepare-s7-1511c)
+     - [Prepare IOT2050](#prepare-iot2050)
+  - [Usage](#usage)
+- [Contribution](#contribution)
+- [Licence and Legal Information](#licence-and-legal-information)
+
+## Overview
 The soil moisture is recorded with two decentralized LOGO! sensors at different locations and sent to the SIMATIC IOT2050 gateway via Modbus TCP. The IOT2050 obtains the current weather data via the Internet and sends this and the sensor data to the SIMATIC S7-1500, which performs the control tasks, via OPC UA.  
 The open source software node-red acts as the central development and runtime environment for the gateway functionality of the SIMATIC IOT2050
 
@@ -7,26 +24,30 @@ The open source software node-red acts as the central development and runtime en
 # Instructions
 The following steps describe how to run this application example.
 
-## Hardware you need 
+## Requirements
+
+### Used Hardware
 - 1x S7-1511C 
 - 2x LOGO! 8 with some sensors connected to AI1 / AI2
 - 1x IOT2050
 - 1x SCALANCE Switch
 
 
-## Software you need
+### Used software
 - TIA Portal V16
 - LOGO! Soft Comfort 
 - Win32 Disk Imager
 - putty
 
-## Pre-requisites: 
+### Pre-requisites: 
 - Knowledge in the handling with LOGO! and LOGO! Soft Comfort
 - Knowledge in the handling with S7-1500 and TIA Portal 
 - Basic Linux Knowledge
 - Account in the Siemens Industry Online Support to download the operating system for the IOT2050
 
-## Create an account on openweathermap.org 
+## Installation
+
+### Create an account on openweathermap
 This is needed to create an API key to retrieve data from this service via the node-red node
 
 1. Open http://openweathermap.com
@@ -38,15 +59,15 @@ This is needed to create an API key to retrieve data from this service via the n
 7. You will need this key at a later stage
 
 
-## Prepare LOGOs
+### Prepare LOGOs
 1. Open LOGO! Soft Comfort project
 2. Download project to the respective LOGO!
 
-## Prepare S7-1511C
+### Prepare S7-1511C
 1. Open TIA Portal project
 2. Download project to the S7-1511C
 
-## Prepare IOT2050
+### Prepare IOT2050
 1. Download Example Image for the IOT2050 from here: https://support.industry.siemens.com/cs/ww/en/view/109780231
 2. Follow *SIMATIC_IOT2050_Setting_up_V1.0.pdf* to setup the IOT2050
 3. Establish an internet connection (via USB-WiFi dongle or eth1)
@@ -62,8 +83,16 @@ This is needed to create an API key to retrieve data from this service via the n
 13. Paste your *API Key* and click on *Done*
 14. Click on *Deploy* to deploy the program
 
-## Operate the example
+## Usage
 1. Open a browser on your PC and open the node-red dashboard via the URL http://192.168.200.1:1880/ui
 2. Choose the city you want to read the weather data
 3. On the LOGO! display you will see the temperature and pressure value
 4. On the S7-1500 the LEDs of the outputs show the current temperature in relation (the higher the temperature is the more LEDs are on)
+
+## Contribution
+
+Thanks for your interest in contributing. Anybody is free to report bugs, unclear documenation, and other problems regarding this repository in the Issues section or, even better, is free to propose any changes to this repository using Merge Requests.
+
+## Licence and Legal Information
+
+Please read the [Legal information](LICENSE.md).
