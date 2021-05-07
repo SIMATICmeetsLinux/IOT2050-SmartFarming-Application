@@ -75,7 +75,7 @@ This is needed to create an API key to retrieve data from this service via the n
 
 ### Prepare IOT2050
 1. Download Example Image for the IOT2050 from here: https://support.industry.siemens.com/cs/ww/en/view/109780231
-2. Follow *SIMATIC_IOT2050_Setting_up_V1.0.pdf* to setup the IOT2050 [docs/SIMATIC_IOT2050_Setting_up_V1.0.pdf](docs/SIMATIC_IOT2050_Setting_up_V1.0.pdf)
+2. Follow [*SIMATIC_IOT2050_Setting_up_V1.0.pdf*](docs/SIMATIC_IOT2050_Setting_up_V1.0.pdf) to setup the IOT2050
 3. Establish an internet connection (via USB-WiFi dongle or eth1)
 4. Open a browser on your PC and open node-red via the URL http://192.168.200.1:1880
 5. Go to the *Menu* -> *Manage Palette* -> *Install*
