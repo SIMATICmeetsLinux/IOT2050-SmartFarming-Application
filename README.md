@@ -16,6 +16,9 @@
 - [Licence and Legal Information](#licence-and-legal-information)
 
 ## Overview
+This application example shows how to use the SIMATIC IOT2050 to gather weatherdata from the internet, connect to LOGO! via Modbus TCP and connect to an S7-1500 via OPC UA using node-red. All gathered data are displayed on a local node-red dashboard on the IOT2050
+
+### Example Use Case
 The soil moisture is recorded with two decentralized LOGO! sensors at different locations and sent to the SIMATIC IOT2050 gateway via Modbus TCP. The IOT2050 obtains the current weather data via the Internet and sends this and the sensor data to the SIMATIC S7-1500, which performs the control tasks, via OPC UA.  
 The open source software node-red acts as the central development and runtime environment for the gateway functionality of the SIMATIC IOT2050
 
