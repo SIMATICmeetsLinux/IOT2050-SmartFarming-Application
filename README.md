@@ -63,16 +63,16 @@ This is needed to create an API key to retrieve data from this service via the n
 
 
 ### Prepare LOGOs
-1. Open LOGO! Soft Comfort project
+1. Open LOGO! Soft Comfort project (src/Smart_Farming_Example_LOGO.mnp)
 2. Download project to the respective LOGO!
 
 ### Prepare S7-1511C
-1. Open TIA Portal project
+1. Open TIA Portal project (src/Smart_Farming_Example_TIA.zip)
 2. Download project to the S7-1511C
 
 ### Prepare IOT2050
 1. Download Example Image for the IOT2050 from here: https://support.industry.siemens.com/cs/ww/en/view/109780231
-2. Follow *SIMATIC_IOT2050_Setting_up_V1.0.pdf* to setup the IOT2050
+2. Follow *SIMATIC_IOT2050_Setting_up_V1.0.pdf* to setup the IOT2050 (docs/SIMATIC_IOT2050_Setting_up_V1.0.pdf)
 3. Establish an internet connection (via USB-WiFi dongle or eth1)
 4. Open a browser on your PC and open node-red via the URL http://192.168.200.1:1880
 5. Go to the *Menu* -> *Manage Palette* -> *Install*
@@ -80,7 +80,7 @@ This is needed to create an API key to retrieve data from this service via the n
 7. Search for *node-red-contrib-opcua* and click on *Install*
 8. Search for *node-red-contrib-openweathermap* and click on *Install*
 9. Search for *node-red-dashboard* and click on *Install*
-10. Copy the content of *flows.json*
+10. Copy the content of *flows.json* (src/flows.json)
 11. Go to the node-red *Menu* -> *Import* -> *Clipboard* and paste the content of *flows.json*
 12. Go to the flow *Weather* and double-click on the *openweathermap* node
 13. Paste your *API Key* and click on *Done*
