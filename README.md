@@ -19,7 +19,7 @@
 This application example shows how to use the SIMATIC IOT2050 to gather weatherdata from the internet, connect to LOGO! via Modbus TCP and connect to an S7-1500 via OPC UA using node-red. All gathered data are displayed on a local node-red dashboard on the IOT2050
 
 ### Example Use Case
-The soil moisture is recorded with two decentralized LOGO! sensors at different locations and sent to the SIMATIC IOT2050 gateway via Modbus TCP. The IOT2050 obtains the current weather data via the Internet and sends this and the sensor data to the SIMATIC S7-1500, which performs the control tasks, via OPC UA.  
+The soil moisture is recorded with two decentralized LOGO! sensors at different locations and sent to the SIMATIC IOT2050 gateway via Modbus TCP. The IOT2050 obtains the current weather data via the internet and sends this and the sensor data to the SIMATIC S7-1500, which performs the control tasks, via OPC UA.  
 The open source software node-red acts as the central development and runtime environment for the gateway functionality of the SIMATIC IOT2050
 
 ![deploy VFC](docs/graphics/use-case.jpg)
@@ -91,9 +91,11 @@ This is needed to create an API key to retrieve data from this service via the n
 
 ## Usage
 1. Open a browser on your PC and open the node-red dashboard via the URL http://192.168.200.1:1880/ui
-2. Choose the city you want to read the weather data
-3. On the LOGO! display you will see the temperature and pressure value
-4. On the S7-1500 the LEDs of the outputs show the current temperature in relation (the higher the temperature is the more LEDs are on)
+2. Choose the city you want to read the weather data from
+3. Weatherdata is displayed on the dashboard, as well as the LOGO! sensor values
+4. On the LOGO! display you will see the temperature and pressure value
+5. On the S7-1500 the LEDs of the outputs show the current temperature in relation (the higher the temperature is the more LEDs are on)
+
 
 ## Contribution
 
