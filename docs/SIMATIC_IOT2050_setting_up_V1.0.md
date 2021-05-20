@@ -1,11 +1,5 @@
 # **Setting up the IOT2050**
 
-SIMATIC IOT2050 Basic - 6ES7647-0BA00-0YA2
-
-SIMATIC IOT2050 Advanced - 6ES7647-0BA00-1YA2
-
----
-
 ## **Legal information**
 
 **Use of application examples:** Application examples illustrate the solution of automation tasks through an interaction of several components in the form of text, graphics and/or software modules. The application examples are a free service by Siemens AG and/or a subsidiary of Siemens AG (“Siemens”). They are non- binding and make no claim to completeness or functionality regarding configuration and equipment. The application examples merely offer help with typical tasks; they do not constitute customer-specific solutions. You yourself are responsible for the proper and safe operation of the products in accordance with applicable regulations and must also check the function of the respective application example and customize it for your system.
@@ -87,7 +81,7 @@ This chapter contains the hardware required for this Setting up.
 - Arduino Uno R3 interface
 - 1 DisplayPort 1.1 A
 
-**SIMATIC IOT2050 Advanced (6ES7647-0BA00-0YA2) Hardware Overview:**
+**SIMATIC IOT2050 Advanced (6ES7647-0BA00-1YA2) Hardware Overview:**
 
 - TI SOC AM6548 HS Quad Core
 - 2 GB RAM (DDR4)
