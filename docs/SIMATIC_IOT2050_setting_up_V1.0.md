@@ -44,6 +44,7 @@ To stay informed about product updates, subscribe to the Siemens Industrial Secu
       - [**3.2.2 Remote access with Putty SSH Connection**](#322-remote-access-with-putty-ssh-connection)
       - [**3.2.3 Setting up network interfaces**](#323-setting-up-network-interfaces)
       - [**3.2.4 Install new software packages on the SIMATIC IOT2050**](#324-install-new-software-packages-on-the-simatic-iot2050)
+  - [**4 Related links**](#4-related-links)
 
 ---
 
@@ -70,13 +71,33 @@ This chapter contains the hardware required for this Setting up.
 
 **SIMATIC IOT2050:** Two different versions of the SIMATIC IOT2050 are available. However, this Setting Up will only use the SIMATIC IOT2050 Basic (6ES7647-0BA00-0YA2) as basis for all examples, but it is valid for SIMATIC IOT2050 Advanced (6ES7647-0BA00-1YA2) as well.
 
-**SIMATIC IOT2050 (6ES7647-0BA00-0YA2) Hardware Overview:**
+**SIMATIC IOT2050 Basic (6ES7647-0BA00-0YA2) Hardware Overview:**
 
 - TI SOC AM6528 GP Dual Core
 - 1 GB RAM (DDR4)
+- RTC without battery
+- SD card slot
+- SIM card slot
+- mPCIe card slot
 - 2 Ethernet interfaces 100/1000 Mbps
 - 2 USB Type A
 - 1 COM interface (RS232/422/485)
+- Arduino Uno R3 interface
+- 1 DisplayPort 1.1 A
+
+**SIMATIC IOT2050 Advanced (6ES7647-0BA00-0YA2) Hardware Overview:**
+
+- TI SOC AM6548 HS Quad Core
+- 2 GB RAM (DDR4)
+- Battery buffered RTC
+- SD card slot
+- SIM card slot
+- mPCIe card slot
+- 16 GB eMMc (internal memory)
+- 2 Ethernet interfaces 100/1000 Mbps
+- 2 USB Type A
+- 1 COM interface (RS232/422/485)
+- Arduino Uno R3 interface
 - 1 DisplayPort 1.1 A
 
 Figure 2-1
@@ -289,3 +310,15 @@ Table 3-7
 |3.|Type “apt install \<nameofsoftware> ”. For example: install wireshark – it is a software to track network packages. Accept the licenses during installation.|
 ||![accept licenses](graphics/setup/3-2-4-accept_licenses.png)|
 |4.|Type “apt purge \<nameofsoftware\> ” to completely remove the software with its configuration file.|
+
+---
+
+## **4 Related links**
+
+Table 4-1
+
+||Topic|
+|:-:|-|
+|1.|SIMATIC IOT2050 forum: [https://support.industry.siemens.com/tf/ww/en/threads/309](https://support.industry.siemens.com/tf/ww/en/threads/309)|
+|2.|Download SD-Card Example Image: [https://support.industry.siemens.com/cs/ww/en/view/109780231](https://support.industry.siemens.com/cs/ww/en/view/109780231)|
+|3.|Operating Instructions: [https://support.industry.siemens.com/cs/ww/en/view/109779016](https://support.industry.siemens.com/cs/ww/en/view/109779016)|
