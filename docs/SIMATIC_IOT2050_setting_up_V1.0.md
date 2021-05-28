@@ -1,4 +1,4 @@
-# **Setting up the IOT2050*
+# **Setting up the IOT2050**
 
 ## **Table of contents**
 
