@@ -93,7 +93,7 @@ This is needed to create an API key to retrieve data from this service via the n
 5. Go to the *Menu* -> *Manage Palette* -> *Install*
 6. Search for *node-red-contrib-modbus* and click on *Install*
 7. Search for *node-red-contrib-opcua* and click on *Install*
-8. Search for *node-red-contrib-openweathermap* and click on *Install*
+8. Search for *node-red-node-openweathermap* and click on *Install*
 9. Search for *node-red-dashboard* and click on *Install*
 10. Copy the content of [*flows.json*](src/flows.json)
 11. Go to the node-red *Menu* -> *Import* -> *Clipboard* and paste the content of *flows.json*
