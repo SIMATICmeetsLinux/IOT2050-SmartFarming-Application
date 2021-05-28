@@ -1,4 +1,4 @@
-# **Setting up the IOT2050*
+# **Setting up the IOT2050**
 
 ## **Table of contents**
 
@@ -119,7 +119,7 @@ It can be downloaded [here](https://support.industry.siemens.com/cs/document/109
 **ssh Client:** To get remote access to the SIMATIC IOT2050 software is required.
 In this document “PuTTY” is used. With this software it is possible to establish a connection to different devices for example via Serial, SSH or Telnet.
 
-The “PuTTY” software can be downloaded [here](https://sourceforge.net/projects/win32diskimager/).
+The “PuTTY” software can be downloaded [here](https://www.putty.org/).
 
 > NOTE: Instead of PuTTY you also can use Windows 10 or Linux built-in ssh client.
 
