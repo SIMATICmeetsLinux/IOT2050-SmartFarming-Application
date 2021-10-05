@@ -1,8 +1,8 @@
-# **Setting up the IOT2050**
+# **Setting up the IOT2050 (V1.1)**
 
 ## **Table of contents**
 
-- [**Setting up the IOT2050**](#setting-up-the-iot2050)
+- [**Setting up the IOT2050 (V1.1)**](#setting-up-the-iot2050-v11)
   - [**Table of contents**](#table-of-contents)
   - [**1 Task**](#1-task)
     - [**1.1 Overview**](#11-overview)
