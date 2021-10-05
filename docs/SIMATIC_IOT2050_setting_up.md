@@ -1,8 +1,8 @@
-# **Setting up the IOT2050**
+# **Setting up the IOT2050 (V1.1)**
 
 ## **Table of contents**
 
-- [**Setting up the IOT2050**](#setting-up-the-iot2050)
+- [**Setting up the IOT2050 (V1.1)**](#setting-up-the-iot2050-v11)
   - [**Table of contents**](#table-of-contents)
   - [**1 Task**](#1-task)
     - [**1.1 Overview**](#11-overview)
@@ -17,6 +17,7 @@
       - [**3.2.3 Setting up network interfaces**](#323-setting-up-network-interfaces)
       - [**3.2.4 Install new software packages on the SIMATIC IOT2050**](#324-install-new-software-packages-on-the-simatic-iot2050)
   - [**4 Related links**](#4-related-links)
+  - [**5 History**](#5-history)
 
 ---
 
@@ -24,7 +25,7 @@
 
 ### **1.1 Overview**
 
-**Introduction:** This Setting Up shows how to set up the SIMATIC IOT2050 with a SD-Card image provided through the Siemens Industry Online Support.
+**Introduction:** This Setting Up shows how to set up the SIMATIC IOT2050 with a SD-Card image (“Example Image”) provided through the Siemens Industry Online Support.
 
 **Goals:** After working through this document, you know how to
 
@@ -85,7 +86,7 @@ Table 2-1
 |3|DisplayPort 1.1 A|
 |4|COM interface (RS22/422/485)|
 |5|Power supply connector|
-|6|USER buton, programmable|
+|6|USER button, programmable|
 |7|LED display|
 |8|RESET button for the CPU|
 |9|Markings for mini PCIe installation accessory|
@@ -102,7 +103,7 @@ The requirement for using SIMATIC IOT2050 with Debian based Linux Operating Syst
 
 **Ethernet Cable:** For an Ethernet Connection between the Engineering Station and the SIMATIC IOT2050 in order to establish a SSH connection and to download the Eclipse projects an Ethernet cable is required.
 
-**DisplayPort Cable (Male-Male) and Monitor:** If you would like to have local connection to the SIMATIC IOT2050, you need to have DisplayPort Cable, a monitor that supports DisplayPort.
+**DisplayPort Cable (Male-Male) and Monitor:** If you would like to have local connection to the SIMATIC IOT2050, you need to have DisplayPort Cable, a monitor that supports DisplayPort. As alternative an **active** DP-HDMI converter can be used.
 
 **Keyboard:** If you would like to have local connection to the SIMATIC IOT2050, you need to have a keyboard connected to IOT2050.
 
@@ -114,7 +115,7 @@ This power supply has to provide between 12 and 24V DC.
 This chapter contains the software required for this Setting up
 
 **Micro-SD Card Example Image:** To use the full functionality of the SIMATIC IOT2050 a SD-Card Example Image with a Debian based Linux Operating System is necessary to be installed. This Image is provided through the Siemens Industry Online Support.
-It can be downloaded [here](https://support.industry.siemens.com/cs/document/109780231/simatic-iot2050-sd-card-example-image?lc=en-ww).
+It can be downloaded [here](https://support.industry.siemens.com/cs/document/109780231).
 
 **ssh Client:** To get remote access to the SIMATIC IOT2050 software is required.
 In this document “PuTTY” is used. With this software it is possible to establish a connection to different devices for example via Serial, SSH or Telnet.
@@ -153,7 +154,7 @@ Table 3-1
 |4.|Start the Win32 Disk Imager|
 |5.|Click on the folder|
 ||![click folder](graphics/setup/3-1-click_folder.png)|
-|6.|Then select the “IOT2050_Example_Image_V1.0.2.img” file in the retrieved SD Card Image folder|
+|6.|Then select the “IOT2050_Example_Image_Vx.x.x.img” file in the retrieved SD Card Image folder|
 ||![select image](graphics/setup/3-1-select_img.png)|
 |7.|Select the drive letter of your SD Card|
 ||![select drive letter](graphics/setup/3-1-select_drive_letter.png)|
@@ -205,13 +206,13 @@ Table 3-4
 |No.|Action|
 |:-:|-|
 |1.|Connect one end of the Ethernet cable to an Ethernet-Port of the Engineering Station.|
-|2.|Connect the other end of the Ethernet cable to the Ethernet-Port X1P2 of the SIMATIC IOT2050.|
+|2.|**For V1.0.2:** Connect the other end of the Ethernet cable to the Ethernet-Port X1P2 of the SIMATIC IOT2050. **As of V1.1.1:** Connect the other end of the Ethernet cable to the Ethernet-Port X1P1 of the SIMATIC IOT2050.|
 
 The Software “Putty” can be used to get remote access from the Engineering Station to the SIMATIC IOT2050 via Serial, SSH or Telnet.
 
 In this Example the SSH connection is used.
 
-**NOTE:** The SIMATIC IOT2050 has a static IP address by default. This address is 192.168.200.1. The Engineering Station has to be in the same subnet as the SIMATIC IOT2050 to establish a SSH connection!
+**NOTE:** The SIMATIC IOT2050 has a static IP address by default. This address is 192.168.200.1. For V1.0.2 this IP address is set for *X1P2*. As of V1.1.1 this IP address is set for *X1P1*. The Engineering Station has to be in the same subnet as the SIMATIC IOT2050 to establish a SSH connection!
 
 **NOTE:** The first boot may last a few minutes – up to 2 – because the filesystem is resized automatically. The time is depending on the SD card you are using.
 
@@ -233,7 +234,7 @@ Table 3-5
 ||![putty login dialog](graphics/setup/3-2-2-putty_login_dialog.png)|
 |6.|Type “root” and press the Enter key. Type “root” for the password and Enter key. You are prompted to change the root password at the first login|
 ||![putty change root password](graphics/setup/3-2-2-putty_change_root_password.png)|
-|7.|Change the password for the login “root: **1.** Type in the current password (“root”) **2.** Set a new password (input is hidden) **3.** Confirm the password (input is hidden)|
+|7.|Change the password for the login “root": **1.** Type in the current password (“root”) **2.** Set a new password (input is hidden) **3.** Confirm the password (input is hidden)|
 ||![putty confirm password](graphics/setup/3-2-2-putty_confirm_password.png)|
 |8.|Now a few Linux commands can be tested. For example, “cd /” to get in the root file system and “ls” to list the folders in the current directory|
 ||![putty test command](graphics/setup/3-2-2-putty_test_command.png)|
@@ -254,8 +255,8 @@ Table 3-6
 |1.|Open a valid serial Putty connection and login as root|
 |2.|Type in “nmtui” to open the network manager tool, navigate to “Activate a connection” and press “Enter”|
 ||![nmtui acivate connection](graphics/setup/3-2-3-nmtui_activate_connection.png)|
-|3.|Select the interfaces to active. eth0 is activated as default. eth1 is deactivated as default.|
-||![nmtui eth0 eth1](graphics/setup/3-2-3-nmtui_eth0_eth1.png)|
+|3.|Select the interfaces to active. For V1.0.2 the interfaces are called eth0 and eth1. As of V1.1.1 the interfaces are called eno1 and eno2. eth0/eno1 is activated as default. eth1/eno2 is deactivated as default, but gets activated automatically when a LAN cable is connected.|
+||![nmtui eno1 eno2](graphics/setup/3-2-3-nmtui_eno1_eno2.png)|
 |4.|You can edit the IP addresses of your interfaces from “Edit a connection”.|
 ||![nmtui edit connection 01](graphics/setup/3-2-3-nmtui_edit_connection_01.png)|
 ||![nmtui edit connection 02](graphics/setup/3-2-3-nmtui_edit_connection_02.png)|
@@ -294,3 +295,12 @@ Table 4-1
 |1.|SIMATIC IOT2050 forum: [https://support.industry.siemens.com/tf/ww/en/threads/309](https://support.industry.siemens.com/tf/ww/en/threads/309)|
 |2.|Download SD-Card Example Image: [https://support.industry.siemens.com/cs/ww/en/view/109780231](https://support.industry.siemens.com/cs/ww/en/view/109780231)|
 |3.|Operating Instructions: [https://support.industry.siemens.com/cs/ww/en/view/109779016](https://support.industry.siemens.com/cs/ww/en/view/109779016)|
+
+---
+
+## **5 History**
+
+|Version|Date|Modifications|
+|-|-|-|
+|V1.0|06/2020|First version|
+|V1.1|10/2021|Added network interface changes as of Example Image V1.1.1|
