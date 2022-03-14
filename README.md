@@ -15,7 +15,7 @@
       - [Prepare S7-1511C](#prepare-s7-1511c)
       - [Prepare IOT2050](#prepare-iot2050)
     - [Usage](#usage)
-  - [Contribution](#contribution)
+  - [Contribution and Contribution License Agreement](#contribution-and-contribution-license-agreement)
   - [Licence and Legal Information](#licence-and-legal-information)
 
 ## Overview
@@ -109,9 +109,9 @@ This is needed to create an API key to retrieve data from this service via the n
 4. On the LOGO! display you will see the temperature and pressure value
 5. On the S7-1500 the LEDs of the outputs show the current temperature in relation (the higher the temperature is the more LEDs are on)
 
-## Contribution
+## Contribution and Contribution License Agreement
 
-Thanks for your interest in contributing. Anybody is free to report bugs, unclear documenation, and other problems regarding this repository in the Issues section or, even better, is free to propose any changes to this repository using Merge Requests.
+Thanks for your interest in contributing. Anybody is free to report bugs, unclear documenation, and other problems regarding this repository in the Issues section or, even better, is free to propose any changes to this repository using Merge Requests. For more information please check the [Contribution License Agreement](docs/Siemens_CLA.pdf).
 
 ## Licence and Legal Information
 
