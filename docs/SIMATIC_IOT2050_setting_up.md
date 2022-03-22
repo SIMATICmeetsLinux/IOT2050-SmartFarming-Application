@@ -1,8 +1,8 @@
-# **Setting up the IOT2050 (V1.1)**
+# **Setting up the IOT2050 (V1.2)**
 
 ## **Table of contents**
 
-- [**Setting up the IOT2050 (V1.1)**](#setting-up-the-iot2050-v11)
+- [**Setting up the IOT2050 (V1.2)**](#setting-up-the-iot2050-v12)
   - [**Table of contents**](#table-of-contents)
   - [**1 Task**](#1-task)
     - [**1.1 Overview**](#11-overview)
@@ -14,8 +14,14 @@
     - [**3.2 First commissioning of the SIMATIC IOT2050**](#32-first-commissioning-of-the-simatic-iot2050)
       - [**3.2.1 Local access**](#321-local-access)
       - [**3.2.2 Remote access with Putty SSH Connection**](#322-remote-access-with-putty-ssh-connection)
-      - [**3.2.3 Setting up network interfaces**](#323-setting-up-network-interfaces)
-      - [**3.2.4 Install new software packages on the SIMATIC IOT2050**](#324-install-new-software-packages-on-the-simatic-iot2050)
+      - [**3.2.3 Remote access using UART connection**](#323-remote-access-using-uart-connection)
+      - [**3.2.4 Setting up network interfaces**](#324-setting-up-network-interfaces)
+      - [**3.2.5 Install new software packages on the SIMATIC IOT2050**](#325-install-new-software-packages-on-the-simatic-iot2050)
+    - [**3.3 Change boot order of IOT2050**](#33-change-boot-order-of-iot2050)
+      - [**3.3.1 With Example Image V1.0.2 / V1.1.1**](#331-with-example-image-v102--v111)
+      - [**3.3.2 As of Example Image V1.2.1**](#332-as-of-example-image-v121)
+      - [**3.3.3 Using UART connection**](#333-using-uart-connection)
+      - [**3.3.4 Skip eMMc as of firmware V1.2.1**](#334-skip-emmc-as-of-firmware-v121)
   - [**4 Related links**](#4-related-links)
   - [**5 History**](#5-history)
 
@@ -33,6 +39,7 @@
 - Get remote access to the SIMATIC IOT2050
 - Change the IP-Address of the SIMATIC IOT2050
 - Install software on the SIMATIC IOT2050
+- Change the boot order of an IOT2050
 
 ---
 
@@ -103,6 +110,8 @@ The requirement for using SIMATIC IOT2050 with Debian based Linux Operating Syst
 
 **Ethernet Cable:** For an Ethernet Connection between the Engineering Station and the SIMATIC IOT2050 in order to establish a SSH connection and to download the Eclipse projects an Ethernet cable is required.
 
+**UART cable (optional, but recommended):** To establish a serial connection to the IOT2050 in order to get into the u-boot shell a 3.3V USB-UART cable is needed. There are many hardware possibilities, good experiences were made with [this cable](https://de.rs-online.com/web/p/entwicklungstool-zubehor/0429307).
+
 **DisplayPort Cable (Male-Male) and Monitor:** If you would like to have local connection to the SIMATIC IOT2050, you need to have DisplayPort Cable, a monitor that supports DisplayPort. As alternative an **active** DP-HDMI converter can be used.
 
 **Keyboard:** If you would like to have local connection to the SIMATIC IOT2050, you need to have a keyboard connected to IOT2050.
@@ -115,7 +124,7 @@ This power supply has to provide between 12 and 24V DC.
 This chapter contains the software required for this Setting up
 
 **Micro-SD Card Example Image:** To use the full functionality of the SIMATIC IOT2050 a SD-Card Example Image with a Debian based Linux Operating System is necessary to be installed. This Image is provided through the Siemens Industry Online Support.
-It can be downloaded [here](https://support.industry.siemens.com/cs/document/109780231).
+The download and information about compatibility can be found [here](https://support.industry.siemens.com/cs/document/109741799).
 
 **ssh Client:** To get remote access to the SIMATIC IOT2050 software is required.
 In this document “PuTTY” is used. With this software it is possible to establish a connection to different devices for example via Serial, SSH or Telnet.
@@ -140,7 +149,7 @@ For the necessary software components please refer to the download links in [Cha
 
 ### **3.1 Installing the SD-Card Example Image**
 
-The first step to work with the SIMATIC IOT2050 is to set up a Micro-SD Card with the Image provided through the [Siemens Industry Online Support](https://support.industry.siemens.com/cs/ww/en/view/109780231).
+The first step to work with the SIMATIC IOT2050 is to set up a Micro-SD Card with the Image provided through the [Siemens Industry Online Support](https://support.industry.siemens.com/cs/document/109741799).
 
 The following table shows the required steps to transfer the SD-Card Image to a Micro-SD Card.
 
@@ -160,7 +169,7 @@ Table 3-1
 ||![select drive letter](graphics/setup/3-1-select_drive_letter.png)|
 |8.|Click the “Write” button|
 ||![click write button](graphics/setup/3-1-click_write_button.png)|
-|9.|Confirm the warning message|
+|9.|Confirm the warning message - **NOTE: All data will be deleted**|
 ||![confirm](graphics/setup/3-1-confirm_overwrite.png)|
 |10.|You will receive a success message if the transfer is done|
 ||![success message](graphics/setup/3-1-success_message.png)|
@@ -243,12 +252,39 @@ Table 3-5
 |10.|You can add the user to sudo group by typing “adduser siemens sudo”|
 ||![putty add user to sudo](graphics/setup/3-2-2-putty_add_user_to_sudo.png)|
 
-#### **3.2.3 Setting up network interfaces**
+#### **3.2.3 Remote access using UART connection**
 
-In the default settings of the SIMATIC IOT2050’s Image, the IP address is set to 192.168.200.1. Thus, if another static IP address or a DHCP address is required, this can be set with the nmtui tool.
-The following table displays the procedure for configuring the IP address settings.
+A [UART cable](#21-required-hardware) is a very helpful device because you can establish a serial connection via putty and interrupt the boot.
+This can be helpful in many cases:
+
+- To change boot order permanently
+- To select to boot from SD card / USB only for the upcoming boot
+- To connect to a system serially instead of using ssh (e.g. IP address is not known and there is no monitor)
+- Detect the problem, when IOT2050 does not boot for some reasons
 
 Table 3-6
+
+|No.|Action|
+|:-:|-|
+|1.|Power off the IOT2050|
+|2.|The UART cable needs to be connected to the IOT2050 to X14. Therefore it is required to open the lid for the Arduino interface to access X14. The M wire (black in this example) needs to be connected to the pin 1|
+||![connect uart cable](graphics/setup/3-2-5-uart_connecting.png)|
+|3.|Connect the USB part of the cable to your PC. Drivers may need to be installed, please check the website of the vendor of the used cable.|
+|4.|Go to Device Manager of your PC and check the assigned COM port|
+||![check com-port](graphics/setup/3-2-5-check_com_port.png)|
+||**NOTE:** If there is no COM port assigned and the device appears as an unknown device, it is needed to install the drivers for the cable|
+|5.|Open putty and configure the connection like this (COM port can differ) and click on Open|
+||![uart putty settings](graphics/setup/3-2-5-uart_putty_settings.png)|
+|6.|Power on the IOT2050. It is now possible to see the whole boot process|
+||![uart boot process](graphics/setup/3-2-5-uart_boot_process.png)|
+|7.|For further actions at the very first boot, see table 3-5 (use putty via ssh-connection)|
+
+#### **3.2.4 Setting up network interfaces**
+
+In the default settings of the SIMATIC IOT2050’s Image, the IP address is set to 192.168.200.1. Thus, if another static IP address or a DHCP address is required, this can be set with the **nmtui** tool.
+The following table displays the procedure for configuring the IP address settings.
+
+Table 3-7
 
 |No.|Action|
 |:-:|-|
@@ -267,13 +303,13 @@ Table 3-6
 |6.|To make changes in your Wireless Connection, go to “Edit a connection”. Here you can make all the changes you needed.|
 ||![nmtui activate wireless 03](graphics/setup/3-2-3-nmtui_activate_wireless_03.png)|
 
-#### **3.2.4 Install new software packages on the SIMATIC IOT2050**
+#### **3.2.5 Install new software packages on the SIMATIC IOT2050**
 
 Provided example image includes apt package manager so that by using apt package manager new software can be installed on SIMATIC IOT2050.
 
 The following table shows how to install new software packages on the SIMATIC IOT2050.
 
-Table 3-7
+Table 3-8
 
 |No.|Action|
 |:-:|-|
@@ -284,6 +320,78 @@ Table 3-7
 ||![accept licenses](graphics/setup/3-2-4-accept_licenses.png)|
 |4.|Type “apt purge \<nameofsoftware\> ” to completely remove the software with its configuration file.|
 
+### **3.3 Change boot order of IOT2050**
+
+The IOT2050 Advanced has an internal eMMc, which is set at first boot device by default for FS:01, FS:02 and from FS:04 of the IOT2050 Advanced. More information about the FS (Functional State) can be found [here](https://support.industry.siemens.com/tf/ww/en/posts/273280).
+
+#### **3.3.1 With Example Image V1.0.2 / V1.1.1**
+
+Table 3-9
+
+|No.|Action|
+|:-:|-|
+|1.|To **check** the current boot order the command `fw_printenv boot_targets` can be used:|
+||![check current boot order](graphics/setup/3-3-1-check_current_boot_order.png)|
+||**NOTE:** **mmc1** = eMMc / **mmc0** = SD card / **usbx** = USB slots|
+|2.|To **change** the boot order the command `fw_setenv boot_targets [devices]` can be used. This is an example to have the external boot devices prior to the internal eMMc:|
+||![change boot order](graphics/setup/3-3-1-change_boot_order.png)|
+|3.|To check whether this was successful, call `fw_printenv boot_targets` again:|
+||![check success](graphics/setup/3-3-1-check_success.png)|
+
+#### **3.3.2 As of Example Image V1.2.1**
+
+Table 3-10
+
+|No.|Action|
+|:-:|-|
+|1.|To **check** the current boot order the command `fw_printenv boot_targets` can be used:|
+||![check current boot order](graphics/setup/3-3-1-check_current_boot_order.png)|
+||**NOTE:** **mmc1** = eMMc / **mmc0** = SD card / **usbx** = USB slots|
+|2.|To **change** the boot order the command `fw_setenv boot_targets [devices]` can be used. **It is important to set the devices in quotes!** This is an example to have the external boot devices prior to the internal eMMc:|
+||![change boot order](graphics/setup/3-3-2-change_boot_order.png)|
+|3.|To check whether this was successful, call `fw_printenv boot_targets` again:|
+||![check success](graphics/setup/3-3-1-check_success.png)|
+
+#### **3.3.3 Using UART connection**
+
+The UART connection can be used to enter the u-boot shell and change the boot order / choose a specific boot device for the upcoming boot process. How to establish a UART connection see [chapter 3.2.3](#323-remote-access-using-uart-connection).
+
+Table 3-11 **Change boot order permanently**
+
+|No.|Action|
+|:-:|-|
+|1.|Interrupt the boot process at the point *Hit any key to stop autoboot* by hitting any key. This will end up in the u-boot shell (indicated by => or IOT2050>)|
+||![interrupt boot process](graphics/setup/3-3-3-interrupt_boot_process.png)|
+|2.|Here change the boot order with the command `setenv boot_targets [devices]` and save the configuration with `saveenv`|
+||![change boot order](graphics/setup/3-3-3-change_boot_order.png)|
+|3.|Type in `boot` to continue booting with the changed boot order|
+||![continue booting](graphics/setup/3-3-3-continue_booting.png)|
+
+Table 3-12 **Select boot device only for the next boot**
+
+|No.|Action|
+|:-:|-|
+|1.|Interrupt the boot process at the point *Hit any key to stop autoboot* by hitting any key. This will end up in the u-boot shell (indicated by => or IOT2050>)|
+||![interrupt boot process](graphics/setup/3-3-3-interrupt_boot_process.png)|
+|2.|Enter run `bootcmd_<device>` to boot from one specific device|
+||![boot from specific device](graphics/setup/3-3-3-boot_from_specific_devices.png)|
+
+#### **3.3.4 Skip eMMc as of firmware V1.2.1**
+
+To use the Example Image V1.2.1 with the IOT2050 Advanced of FS:01, FS:02, FS:03 and the IOT2050 Basic of FS:01, it is required to update the firmware of those devices. More information and a How-To can be found [here](https://support.industry.siemens.com/tf/ww/en/posts/275777).
+
+With the firmware V1.2.1 it is possible to neglect/skip the eMMc as boot device and only check external devices for bootable images.
+
+Table 3-13
+
+|No.|Action|
+|:-:|-|
+|1.|Press and hold the USER button|
+|2.|Power on / Reset the IOT2050 Advanced|
+|3.|Hold the USER button until the STAT LED gets orange|
+|4.|Release the USER button|
+|5.|IOT2050 is booting only from external media|
+
 ---
 
 ## **4 Related links**
@@ -292,7 +400,7 @@ Table 4-1
 
 ||Topic|
 |:-:|-|
-|1.|SIMATIC IOT2050 forum: [https://support.industry.siemens.com/tf/ww/en/threads/309](https://support.industry.siemens.com/tf/ww/en/threads/309)|
+|1.|SIMATIC IOT2050 forum: [https://support.industry.siemens.com/tf/ww/en/threads/309](https://support.industry.siemens.com/tf/ww/en/threads/309w)|
 |2.|Download SD-Card Example Image: [https://support.industry.siemens.com/cs/ww/en/view/109780231](https://support.industry.siemens.com/cs/ww/en/view/109780231)|
 |3.|Operating Instructions: [https://support.industry.siemens.com/cs/ww/en/view/109779016](https://support.industry.siemens.com/cs/ww/en/view/109779016)|
 
@@ -304,3 +412,4 @@ Table 4-1
 |-|-|-|
 |V1.0|06/2020|First version|
 |V1.1|10/2021|Added network interface changes as of Example Image V1.1.1|
+|V1.2|02/2022|Added UART connection / Added information about changing the boot order and skip eMMc with firmware 1.2.1|
